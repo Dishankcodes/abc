@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown for Nivyaaaa</title>
+  <style>
+    /* Starry Night Background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+      color: white;
+    }
+
+    .stars, .sparkles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .stars::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('star.png') repeat;
+      animation: moveStars 100s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px #f0f, 0 0 20px #a0a;
+    }
+
+    h2 {
+      font-size: 2em;
+      color: #ffd9fa;
+      text-shadow: 0 0 5px #ff99cc;
+    }
+
+    .message {
+      font-size: 1.2em;
+      margin-top: 25px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #ffe8f7;
+    }
+
+    .photo {
+      margin-top: 30px;
+      width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 200, 255, 0.6);
+    }
+
+    /* Sparkle effect */
+    .sparkles::before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 2s infinite ease-in-out;
+      box-shadow:
+        100px 100px white,
+        200px 150px pink,
+        300px 200px white,
+        400px 100px #ff69b4,
+        500px 180px white,
+        600px 130px #ffb6c1;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* Fireworks */
+    @keyframes fireworks {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    .firework {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(white, pink, transparent);
+      border-radius: 50%;
+      animation: fireworks 1s ease-out infinite;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="romantic-music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Starry layers and effects -->
+  <div class="stars"></div>
+  <div class="sparkles"></div>
+  <div id="firework-container"></div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>Counting Down to Your Day, Nivyaaaa 💫</h1>
+    <h2 id="countdown"></h2>
+    <p class="message"> Heheee Mariii bakudi cutudii kuchupuchu ek j divas rahyo tr bday hehe many many happy return of the day in advanceeeeee hehee enjoy your tommorrow speical
+day for youu enjoyyy everyy bit of that heheee onceee again for my sidee speical paragprah hehee aapdee roj sathee raisuu hooo jagdisuuu naiii bilkull b ane kaikk thay toh solvr kar laisu apde
+ane tu bau tenstion naa le tu heal thai jais tam tamare u are a strong girll roar hehe	✨💖</p>
+    <img src="nivya-photo.jpg" alt="Nivyaaaa Smiling" class="photo" />
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const countdown = document.getElementById("countdown");
+    const birthday = new Date("June 11, 2025 00:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = birthday - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+
+    // Fireworks
+    const container = document.getElementById("firework-container");
+    function spawnFirework() {
+      const fw = document.createElement("div");
+      fw.className = "firework";
+      fw.style.top = Math.random() * window.innerHeight + "px";
+      fw.style.left = Math.random() * window.innerWidth + "px";
+      container.appendChild(fw);
+      setTimeout(() => fw.remove(), 1000);
+    }
+    setInterval(spawnFirework, 400);
+  </script>
+</body>
+</html>
